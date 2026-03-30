@@ -1,0 +1,23 @@
+
+PROG 2500 – Windows Programming in C#
+In-Class Assignment 04 – Working with ADO.NET
+
+Student: Thomas Burchell
+
+QUESTION 1 – SqlDataAdapter vs SqlDataReader
+
+SqlDataReader is a forward-only, read-only data access object that requires an open database connection. It is highly performant and memory-efficient, making it ideal for read-only operations such as reports.
+
+SqlDataAdapter works in a disconnected manner and fills DataTable/DataSet objects. It supports full CRUD operations and is well-suited for WPF DataGrid binding.
+
+QUESTION 2 – SqlCommandBuilder
+
+SqlCommandBuilder automatically generates INSERT, UPDATE, and DELETE SQL commands for a SqlDataAdapter based on its SELECT statement. This simplifies CRUD operations when working with DataTables.
+
+Limitations include lack of support for joins and complex queries.
+
+QUESTION 3 – Connection Pooling
+
+Connection pooling reuses existing database connections to reduce overhead and improve performance. ADO.NET enables pooling by default. Connections are returned to the pool when closed.
+
+WPF examples are included in the source code.

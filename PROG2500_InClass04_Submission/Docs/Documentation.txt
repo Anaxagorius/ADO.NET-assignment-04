@@ -1,0 +1,9 @@
+PROG 2500 – In-Class Assignment 04
+Working with ADO.NET
+
+This project demonstrates:
+1. SqlDataReader vs SqlDataAdapter
+2. SqlCommandBuilder with WPF DataGrid
+3. Connection Pooling in ADO.NET
+
+All code is written in C# using WPF (.NET Framework style).
