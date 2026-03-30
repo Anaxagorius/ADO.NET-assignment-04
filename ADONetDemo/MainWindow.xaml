@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="ADO.NET Demo – Assignment 04" Height="420" Width="560"
+        Title="ADO.NET Demo – Assignment 04" Height="420" Width="520"
         WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Grid Background="#F0F4F8">
+    <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -14,62 +14,47 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Border Grid.Row="0" Background="#1565C0" Padding="16,12">
-            <StackPanel>
-                <TextBlock Text="ADO.NET Assignment 04" FontSize="22" FontWeight="Bold"
-                           Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="Working with ADO.NET – Demo Application"
-                           FontSize="13" Foreground="#BBDEFB" HorizontalAlignment="Center" Margin="0,4,0,0"/>
-            </StackPanel>
-        </Border>
+        <StackPanel Grid.Row="0" Margin="0,0,0,12">
+            <TextBlock Text="ADO.NET Assignment 04" FontSize="20" FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Working with ADO.NET"
+                       FontSize="12" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+        </StackPanel>
 
         <!-- Navigation Buttons -->
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Width="420" Margin="0,20,0,20">
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
-            <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,14"
-                    Effect="{DynamicResource CardShadow}">
+            <GroupBox Header="Question 1 – SqlDataAdapter vs SqlDataReader" Margin="0,0,0,10" Padding="8">
                 <StackPanel>
-                    <TextBlock Text="Question 1" FontWeight="Bold" Foreground="#1565C0" FontSize="13"/>
-                    <TextBlock Text="SqlDataAdapter vs SqlDataReader" FontSize="15" FontWeight="SemiBold"
-                               Margin="0,2,0,6" TextWrapping="Wrap"/>
                     <TextBlock Text="Compare both approaches: read product data using SqlDataReader for fast forward-only reads and SqlDataAdapter for disconnected DataSet access."
-                               FontSize="11" Foreground="#555" TextWrapping="Wrap" Margin="0,0,0,8"/>
-                    <Button Content="Open Demo →" Click="OpenDataAdapterReader_Click"
-                            Style="{StaticResource NavButton}" Background="#1565C0"/>
+                               FontSize="11" TextWrapping="Wrap" Margin="0,0,0,8"/>
+                    <Button Content="Open" Click="OpenDataAdapterReader_Click"
+                            Width="80" HorizontalAlignment="Right"/>
                 </StackPanel>
-            </Border>
+            </GroupBox>
 
-            <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,14"
-                    Effect="{DynamicResource CardShadow}">
+            <GroupBox Header="Question 2 – SqlCommandBuilder with DataGrid" Margin="0,0,0,10" Padding="8">
                 <StackPanel>
-                    <TextBlock Text="Question 2" FontWeight="Bold" Foreground="#2E7D32" FontSize="13"/>
-                    <TextBlock Text="SqlCommandBuilder with DataGrid" FontSize="15" FontWeight="SemiBold"
-                               Margin="0,2,0,6" TextWrapping="Wrap"/>
                     <TextBlock Text="Edit product records in a DataGrid and use SqlCommandBuilder to automatically generate INSERT / UPDATE / DELETE commands."
-                               FontSize="11" Foreground="#555" TextWrapping="Wrap" Margin="0,0,0,8"/>
-                    <Button Content="Open Demo →" Click="OpenCommandBuilder_Click"
-                            Style="{StaticResource NavButton}" Background="#2E7D32"/>
+                               FontSize="11" TextWrapping="Wrap" Margin="0,0,0,8"/>
+                    <Button Content="Open" Click="OpenCommandBuilder_Click"
+                            Width="80" HorizontalAlignment="Right"/>
                 </StackPanel>
-            </Border>
+            </GroupBox>
 
-            <Border Background="White" CornerRadius="8" Padding="20"
-                    Effect="{DynamicResource CardShadow}">
+            <GroupBox Header="Question 3 – Connection Pooling Demo" Padding="8">
                 <StackPanel>
-                    <TextBlock Text="Question 3" FontWeight="Bold" Foreground="#6A1B9A" FontSize="13"/>
-                    <TextBlock Text="Connection Pooling Demo" FontSize="15" FontWeight="SemiBold"
-                               Margin="0,2,0,6" TextWrapping="Wrap"/>
                     <TextBlock Text="Open multiple connections and observe how ADO.NET connection pooling reuses physical connections, measuring the time difference."
-                               FontSize="11" Foreground="#555" TextWrapping="Wrap" Margin="0,0,0,8"/>
-                    <Button Content="Open Demo →" Click="OpenConnectionPooling_Click"
-                            Style="{StaticResource NavButton}" Background="#6A1B9A"/>
+                               FontSize="11" TextWrapping="Wrap" Margin="0,0,0,8"/>
+                    <Button Content="Open" Click="OpenConnectionPooling_Click"
+                            Width="80" HorizontalAlignment="Right"/>
                 </StackPanel>
-            </Border>
+            </GroupBox>
         </StackPanel>
 
         <!-- Footer -->
-        <TextBlock Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,10"
-                   FontSize="11" Foreground="#888"
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center" Margin="0,8,0,0"
+                   FontSize="11"
                    Text="Configure the SQL Server connection string in App.xaml.cs before running."/>
     </Grid>
 </Window>

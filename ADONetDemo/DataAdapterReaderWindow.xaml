@@ -13,18 +13,16 @@
 
         <!-- Title -->
         <TextBlock Grid.Row="0" Text="Q1 – SqlDataAdapter vs SqlDataReader"
-                   FontSize="18" FontWeight="Bold" Foreground="#1565C0" Margin="0,0,0,8"/>
+                   FontSize="18" FontWeight="Bold" Margin="0,0,0,8"/>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
             <Button x:Name="BtnReader" Content="Load via SqlDataReader" Width="200" Height="32"
-                    Click="BtnReader_Click" Margin="0,0,10,0" Background="#1565C0" Foreground="White"
-                    BorderThickness="0" Cursor="Hand"/>
+                    Click="BtnReader_Click" Margin="0,0,10,0"/>
             <Button x:Name="BtnAdapter" Content="Load via SqlDataAdapter" Width="200" Height="32"
-                    Click="BtnAdapter_Click" Margin="0,0,10,0" Background="#0D47A1" Foreground="White"
-                    BorderThickness="0" Cursor="Hand"/>
+                    Click="BtnAdapter_Click" Margin="0,0,10,0"/>
             <TextBlock x:Name="TxtStatus" VerticalAlignment="Center" FontStyle="Italic"
-                       Foreground="#555" Margin="6,0"/>
+                       Margin="6,0"/>
         </StackPanel>
 
         <!-- Tab Control: Results + Explanation -->
@@ -32,7 +30,7 @@
             <TabItem Header="Results">
                 <DataGrid x:Name="ResultGrid" AutoGenerateColumns="True"
                           IsReadOnly="True" CanUserAddRows="False"
-                          GridLinesVisibility="Horizontal" AlternatingRowBackground="#F5F5F5"/>
+                          GridLinesVisibility="Horizontal"/>
             </TabItem>
             <TabItem Header="Comparison &amp; Notes">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -74,8 +72,8 @@
         </TabControl>
 
         <!-- Setup hint -->
-        <Border Grid.Row="3" Background="#FFF9C4" CornerRadius="4" Padding="8,6">
-            <TextBlock FontSize="11" Foreground="#555" TextWrapping="Wrap">
+        <Border Grid.Row="3" BorderBrush="Gray" BorderThickness="1" Padding="8,6">
+            <TextBlock FontSize="11" TextWrapping="Wrap">
                 <Run FontWeight="Bold">Setup:</Run>
                 <Run>The demo connects to the ADONetDemo database and reads the Products table.</Run>
                 <Run>Run the setup script (DatabaseSetup.sql) first to create the database and seed data.</Run>

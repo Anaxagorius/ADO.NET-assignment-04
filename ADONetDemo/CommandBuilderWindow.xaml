@@ -14,17 +14,17 @@
 
         <!-- Title -->
         <TextBlock Grid.Row="0" Text="Q2 – SqlCommandBuilder with DataGrid"
-                   FontSize="18" FontWeight="Bold" Foreground="#2E7D32" Margin="0,0,0,8"/>
+                   FontSize="18" FontWeight="Bold" Margin="0,0,0,8"/>
 
         <!-- Toolbar -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
             <Button x:Name="BtnLoad"       Content="Load Products"   Width="130" Height="32"
-                    Click="BtnLoad_Click"   Margin="0,0,8,0" Background="#2E7D32" Foreground="White" BorderThickness="0"/>
+                    Click="BtnLoad_Click"   Margin="0,0,8,0"/>
             <Button x:Name="BtnSave"       Content="Save Changes"    Width="130" Height="32"
-                    Click="BtnSave_Click"   Margin="0,0,8,0" Background="#1B5E20" Foreground="White" BorderThickness="0" IsEnabled="False"/>
+                    Click="BtnSave_Click"   Margin="0,0,8,0" IsEnabled="False"/>
             <Button x:Name="BtnAddRow"     Content="+ Add Row"       Width="100" Height="32"
-                    Click="BtnAddRow_Click" Margin="0,0,8,0" Background="#388E3C" Foreground="White" BorderThickness="0" IsEnabled="False"/>
-            <TextBlock x:Name="TxtStatus"  VerticalAlignment="Center" FontStyle="Italic" Foreground="#555"/>
+                    Click="BtnAddRow_Click" Margin="0,0,8,0" IsEnabled="False"/>
+            <TextBlock x:Name="TxtStatus"  VerticalAlignment="Center" FontStyle="Italic"/>
         </StackPanel>
 
         <!-- DataGrid -->
@@ -32,7 +32,7 @@
             <TabItem Header="Products DataGrid">
                 <DataGrid x:Name="ProductGrid" AutoGenerateColumns="False"
                           CanUserAddRows="False" CanUserDeleteRows="True"
-                          GridLinesVisibility="Horizontal" AlternatingRowBackground="#F5F5F5"
+                          GridLinesVisibility="Horizontal"
                           SelectionMode="Single" SelectionUnit="FullRow">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID"       Binding="{Binding ProductId}" Width="60"  IsReadOnly="True"/>
@@ -84,14 +84,14 @@
         <GroupBox Grid.Row="3" Header="Generated SQL Log" Margin="0,0,0,6" Height="100">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <TextBox x:Name="TxtLog" IsReadOnly="True" FontFamily="Consolas" FontSize="11"
-                         Background="#F8F8F8" BorderThickness="0" TextWrapping="Wrap"
+                         BorderThickness="0" TextWrapping="Wrap"
                          AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
             </ScrollViewer>
         </GroupBox>
 
         <!-- Setup hint -->
-        <Border Grid.Row="4" Background="#FFF9C4" CornerRadius="4" Padding="8,6">
-            <TextBlock FontSize="11" Foreground="#555" TextWrapping="Wrap">
+        <Border Grid.Row="4" BorderBrush="Gray" BorderThickness="1" Padding="8,6">
+            <TextBlock FontSize="11" TextWrapping="Wrap">
                 <Run FontWeight="Bold">Tip:</Run>
                 <Run>Edit any cell, then click "Save Changes" to persist updates via SqlCommandBuilder-generated SQL.</Run>
             </TextBlock>
