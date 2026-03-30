@@ -1,0 +1,85 @@
+﻿<Window x:Class="ADONetDemo.DataAdapterReaderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Q1 – SqlDataAdapter vs SqlDataReader" Height="640" Width="920"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="Q1 – SqlDataAdapter vs SqlDataReader"
+                   FontSize="18" FontWeight="Bold" Foreground="#1565C0" Margin="0,0,0,8"/>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
+            <Button x:Name="BtnReader" Content="Load via SqlDataReader" Width="200" Height="32"
+                    Click="BtnReader_Click" Margin="0,0,10,0" Background="#1565C0" Foreground="White"
+                    BorderThickness="0" Cursor="Hand"/>
+            <Button x:Name="BtnAdapter" Content="Load via SqlDataAdapter" Width="200" Height="32"
+                    Click="BtnAdapter_Click" Margin="0,0,10,0" Background="#0D47A1" Foreground="White"
+                    BorderThickness="0" Cursor="Hand"/>
+            <TextBlock x:Name="TxtStatus" VerticalAlignment="Center" FontStyle="Italic"
+                       Foreground="#555" Margin="6,0"/>
+        </StackPanel>
+
+        <!-- Tab Control: Results + Explanation -->
+        <TabControl Grid.Row="2" Margin="0,0,0,8">
+            <TabItem Header="Results">
+                <DataGrid x:Name="ResultGrid" AutoGenerateColumns="True"
+                          IsReadOnly="True" CanUserAddRows="False"
+                          GridLinesVisibility="Horizontal" AlternatingRowBackground="#F5F5F5"/>
+            </TabItem>
+            <TabItem Header="Comparison &amp; Notes">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TextBlock TextWrapping="Wrap" Padding="12" FontSize="12" LineHeight="20">
+                        <Run FontSize="14" FontWeight="Bold">SqlDataReader (Connected / Forward-Only)</Run>
+                        <LineBreak/>
+                        <Run>• Works in "connected" mode – requires an open connection for the entire read.</Run>
+                        <LineBreak/>
+                        <Run>• Reads rows one at a time in a forward-only cursor – very low memory footprint.</Run>
+                        <LineBreak/>
+                        <Run>• Fastest option for large result sets you process row-by-row.</Run>
+                        <LineBreak/>
+                        <Run>• Cannot scroll backward; no built-in support for updating data.</Run>
+                        <LineBreak/>
+                        <Run>• Best for: reports, streaming exports, read-only lookups.</Run>
+                        <LineBreak/><LineBreak/>
+                        <Run FontSize="14" FontWeight="Bold">SqlDataAdapter (Disconnected / DataSet)</Run>
+                        <LineBreak/>
+                        <Run>• Works in "disconnected" mode – fills a DataSet/DataTable then closes the connection.</Run>
+                        <LineBreak/>
+                        <Run>• Entire result set is cached in memory, allowing random access and offline editing.</Run>
+                        <LineBreak/>
+                        <Run>• Works with SqlCommandBuilder to auto-generate INSERT/UPDATE/DELETE commands.</Run>
+                        <LineBreak/>
+                        <Run>• Higher memory usage for large result sets compared to SqlDataReader.</Run>
+                        <LineBreak/>
+                        <Run>• Best for: data-binding (DataGrid), offline editing, master-detail forms.</Run>
+                        <LineBreak/><LineBreak/>
+                        <Run FontSize="14" FontWeight="Bold">Performance Impact</Run>
+                        <LineBreak/>
+                        <Run>SqlDataReader has lower latency because it streams rows directly from the server.</Run>
+                        <LineBreak/>
+                        <Run>SqlDataAdapter has higher initial overhead (loads all rows) but enables two-way binding.</Run>
+                        <LineBreak/>
+                        <Run>The status bar above shows the elapsed time for each approach.</Run>
+                    </TextBlock>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <!-- Setup hint -->
+        <Border Grid.Row="3" Background="#FFF9C4" CornerRadius="4" Padding="8,6">
+            <TextBlock FontSize="11" Foreground="#555" TextWrapping="Wrap">
+                <Run FontWeight="Bold">Setup:</Run>
+                <Run>The demo connects to the ADONetDemo database and reads the Products table.</Run>
+                <Run>Run the setup script (DatabaseSetup.sql) first to create the database and seed data.</Run>
+            </TextBlock>
+        </Border>
+    </Grid>
+</Window>

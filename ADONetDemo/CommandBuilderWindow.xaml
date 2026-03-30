@@ -1,0 +1,100 @@
+﻿<Window x:Class="ADONetDemo.CommandBuilderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Q2 – SqlCommandBuilder with DataGrid" Height="620" Width="920"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="Q2 – SqlCommandBuilder with DataGrid"
+                   FontSize="18" FontWeight="Bold" Foreground="#2E7D32" Margin="0,0,0,8"/>
+
+        <!-- Toolbar -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
+            <Button x:Name="BtnLoad"       Content="Load Products"   Width="130" Height="32"
+                    Click="BtnLoad_Click"   Margin="0,0,8,0" Background="#2E7D32" Foreground="White" BorderThickness="0"/>
+            <Button x:Name="BtnSave"       Content="Save Changes"    Width="130" Height="32"
+                    Click="BtnSave_Click"   Margin="0,0,8,0" Background="#1B5E20" Foreground="White" BorderThickness="0" IsEnabled="False"/>
+            <Button x:Name="BtnAddRow"     Content="+ Add Row"       Width="100" Height="32"
+                    Click="BtnAddRow_Click" Margin="0,0,8,0" Background="#388E3C" Foreground="White" BorderThickness="0" IsEnabled="False"/>
+            <TextBlock x:Name="TxtStatus"  VerticalAlignment="Center" FontStyle="Italic" Foreground="#555"/>
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <TabControl Grid.Row="2" Margin="0,0,0,8">
+            <TabItem Header="Products DataGrid">
+                <DataGrid x:Name="ProductGrid" AutoGenerateColumns="False"
+                          CanUserAddRows="False" CanUserDeleteRows="True"
+                          GridLinesVisibility="Horizontal" AlternatingRowBackground="#F5F5F5"
+                          SelectionMode="Single" SelectionUnit="FullRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"       Binding="{Binding ProductId}" Width="60"  IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Name"     Binding="{Binding Name}"      Width="200"/>
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category}"  Width="140"/>
+                        <DataGridTextColumn Header="Price"    Binding="{Binding Price}"      Width="100"/>
+                        <DataGridTextColumn Header="Stock"    Binding="{Binding Stock}"      Width="80"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="How It Works">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TextBlock TextWrapping="Wrap" Padding="12" FontSize="12" LineHeight="20">
+                        <Run FontSize="14" FontWeight="Bold">SqlCommandBuilder</Run>
+                        <LineBreak/>
+                        <Run>SqlCommandBuilder automatically generates INSERT, UPDATE, and DELETE</Run>
+                        <LineBreak/>
+                        <Run>SQL statements based on the SELECT command of a SqlDataAdapter.</Run>
+                        <LineBreak/><LineBreak/>
+                        <Run FontWeight="Bold">How this window works:</Run>
+                        <LineBreak/>
+                        <Run>1. "Load Products" fills a DataTable via SqlDataAdapter.Fill().</Run>
+                        <LineBreak/>
+                        <Run>2. The DataTable is bound to the DataGrid – you can edit cells,</Run>
+                        <LineBreak/>
+                        <Run>   delete rows (Del key), or add new rows via "+ Add Row".</Run>
+                        <LineBreak/>
+                        <Run>3. "Save Changes" calls SqlDataAdapter.Update(dataTable).</Run>
+                        <LineBreak/>
+                        <Run>   SqlCommandBuilder introspects the SELECT command and derives</Run>
+                        <LineBreak/>
+                        <Run>   parametrised INSERT/UPDATE/DELETE commands automatically.</Run>
+                        <LineBreak/><LineBreak/>
+                        <Run FontWeight="Bold">Limitations of SqlCommandBuilder:</Run>
+                        <LineBreak/>
+                        <Run>• Only works with single-table SELECT queries (no JOINs).</Run>
+                        <LineBreak/>
+                        <Run>• The table must have a primary key column.</Run>
+                        <LineBreak/>
+                        <Run>• Generated SQL may be less optimal than hand-written queries.</Run>
+                        <LineBreak/>
+                        <Run>• Does not support stored procedures or complex SQL.</Run>
+                    </TextBlock>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <!-- Log area -->
+        <GroupBox Grid.Row="3" Header="Generated SQL Log" Margin="0,0,0,6" Height="100">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBox x:Name="TxtLog" IsReadOnly="True" FontFamily="Consolas" FontSize="11"
+                         Background="#F8F8F8" BorderThickness="0" TextWrapping="Wrap"
+                         AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+            </ScrollViewer>
+        </GroupBox>
+
+        <!-- Setup hint -->
+        <Border Grid.Row="4" Background="#FFF9C4" CornerRadius="4" Padding="8,6">
+            <TextBlock FontSize="11" Foreground="#555" TextWrapping="Wrap">
+                <Run FontWeight="Bold">Tip:</Run>
+                <Run>Edit any cell, then click "Save Changes" to persist updates via SqlCommandBuilder-generated SQL.</Run>
+            </TextBlock>
+        </Border>
+    </Grid>
+</Window>
