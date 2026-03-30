@@ -14,7 +14,7 @@
 
         <!-- Title -->
         <TextBlock Grid.Row="0" Text="Q3 – Connection Pooling Demo"
-                   FontSize="18" FontWeight="Bold" Foreground="#6A1B9A" Margin="0,0,0,8"/>
+                   FontSize="18" FontWeight="Bold" Margin="0,0,0,8"/>
 
         <!-- Controls -->
         <Grid Grid.Row="1" Margin="0,0,0,8">
@@ -37,14 +37,14 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,8">
             <Button x:Name="BtnPooled"    Content="Run WITH Pooling (Pooling=true)"
                     Width="230" Height="32" Click="BtnPooled_Click"
-                    Margin="0,0,10,0" Background="#6A1B9A" Foreground="White" BorderThickness="0"/>
+                    Margin="0,0,10,0"/>
             <Button x:Name="BtnNoPool"    Content="Run WITHOUT Pooling (Pooling=false)"
                     Width="250" Height="32" Click="BtnNoPool_Click"
-                    Margin="0,0,10,0" Background="#4A148C" Foreground="White" BorderThickness="0"/>
+                    Margin="0,0,10,0"/>
             <Button x:Name="BtnClearPool" Content="Clear Pool &amp; Reset"
                     Width="160" Height="32" Click="BtnClearPool_Click"
-                    Margin="0,0,10,0" Background="#880E4F" Foreground="White" BorderThickness="0"/>
-            <TextBlock x:Name="TxtStatus" VerticalAlignment="Center" FontStyle="Italic" Foreground="#555"/>
+                    Margin="0,0,10,0"/>
+            <TextBlock x:Name="TxtStatus" VerticalAlignment="Center" FontStyle="Italic"/>
         </StackPanel>
 
         <!-- Tab: Log + Explanation -->
@@ -52,7 +52,7 @@
             <TabItem Header="Timing Log">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <TextBox x:Name="TxtLog" IsReadOnly="True" FontFamily="Consolas" FontSize="11"
-                             Background="#F8F8F8" BorderThickness="0" TextWrapping="Wrap"
+                             BorderThickness="0" TextWrapping="Wrap"
                              AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                 </ScrollViewer>
             </TabItem>
@@ -112,8 +112,8 @@
         </TabControl>
 
         <!-- Setup hint -->
-        <Border Grid.Row="4" Background="#FFF9C4" CornerRadius="4" Padding="8,6">
-            <TextBlock FontSize="11" Foreground="#555" TextWrapping="Wrap">
+        <Border Grid.Row="4" BorderBrush="Gray" BorderThickness="1" Padding="8,6">
+            <TextBlock FontSize="11" TextWrapping="Wrap">
                 <Run FontWeight="Bold">Observe:</Run>
                 <Run>Run WITH pooling first – subsequent iterations are much faster because</Run>
                 <Run>physical connections are reused. Run WITHOUT pooling to see the overhead of</Run>
